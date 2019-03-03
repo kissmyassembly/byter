@@ -27,7 +27,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jp-hW-HvR">
                                 <rect key="frame" x="315" y="668" width="45" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="2Pl-Pv-kUw"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="2Pl-Pv-kUw"/>
                                     <constraint firstAttribute="width" constant="45" id="C0f-Ud-ZnZ"/>
                                     <constraint firstAttribute="height" constant="45" id="bb7-90-7hz"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="ewx-w7-SNg"/>
@@ -43,21 +43,25 @@
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yum-wH-mEf">
-                                <rect key="frame" x="16" y="59" width="30" height="30"/>
+                                <rect key="frame" x="16" y="59" width="45" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="ZYA-7r-Cv0"/>
-                                    <constraint firstAttribute="height" constant="30" id="gaY-wH-gac"/>
+                                    <constraint firstAttribute="width" constant="45" id="ZYA-7r-Cv0"/>
+                                    <constraint firstAttribute="height" constant="45" id="gaY-wH-gac"/>
                                 </constraints>
                                 <state key="normal" image="Hamburger"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjJ-mu-4fX">
-                                <rect key="frame" x="329" y="59" width="30" height="30"/>
+                                <rect key="frame" x="314" y="59" width="45" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="71d-vC-GCU"/>
-                                    <constraint firstAttribute="height" constant="30" id="vVF-NP-jpK"/>
+                                    <constraint firstAttribute="width" constant="45" id="71d-vC-GCU"/>
+                                    <constraint firstAttribute="height" constant="45" id="vVF-NP-jpK"/>
                                 </constraints>
                                 <state key="normal" image="Search Image"/>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="axr-8w-J9K">
+                                <rect key="frame" x="82" y="295" width="110" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -80,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="268" y="142"/>
+            <point key="canvasLocation" x="268" y="141.87192118226602"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="gYD-oR-PC7">

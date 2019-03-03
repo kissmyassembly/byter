@@ -220,6 +220,9 @@ class ViewController: UIViewController {
         {
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
+            mapView.showsCompass = false
+            mapView.isRotateEnabled = false
+            mapView.mapType = MKMapType.standard
             centerViewOnUserLocation()
             locationManager.startUpdatingLocation()
             
