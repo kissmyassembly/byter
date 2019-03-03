@@ -32,16 +32,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupFirebase()
+        
         //additionalSafeAreaInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: mapView.bounds.height, right: 0.0)
         checkLocationServices()
         
         // TEST CODE: set direct path to only user document on Firebase
         //docRef = Firestore.firestore().document("/users/SMyYX2fVBOA8sEX8kol6")
-        
-        // set up db from Firebase
-        let settings = FirestoreSettings()
-        Firestore.firestore().settings = settings
-        db = Firestore.firestore()
         
         // TEST CODE: hard code user data
 //        currentUser = User.init(dictionary: self.tempUserDictionary())
@@ -81,7 +79,7 @@ class ViewController: UIViewController {
         //self.getData()
         
         // update current user's information
-        self.rewriteCurrentUser()
+//        self.rewriteCurrentUser()
     }
     
 //    func tempUserDictionary() -> [String: Any] {
@@ -97,6 +95,13 @@ class ViewController: UIViewController {
 //            "device_id": identifier ?? ""
 //        ]
 //    }
+    
+    func setupFirebase() {
+        // set up db from Firebase
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
+    }
     
     func getData() {
         db.collection(collectionName)
@@ -196,6 +201,9 @@ class ViewController: UIViewController {
             mapView.showsUserLocation = true
             centerViewOnUserLocation()
             locationManager.startUpdatingLocation()
+            
+            // update current user's information
+            self.rewriteCurrentUser()
             
             break
         case .denied:
