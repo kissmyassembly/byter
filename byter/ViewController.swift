@@ -13,12 +13,31 @@ import Firebase
 class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var segcontrol: UISegmentedControl!
+    @IBOutlet weak var segControlView: UIView!
     @IBAction func centerButton(_ sender: Any)
     {
         centerViewOnUserLocation()
     }
    
+    @IBAction func segmentedControl(_ sender: Any) {
+        if (segcontrol.selectedSegmentIndex == 0)
+        {
+            mapView.mapType = MKMapType.standard
+        }
+        else if (segcontrol.selectedSegmentIndex == 1)
+        {
+            mapView.mapType = MKMapType.hybridFlyover
+        }
+        else if (segcontrol.selectedSegmentIndex == 2)
+        {
+            mapView.mapType = MKMapType.satelliteFlyover
+        }
+        else { mapView.mapType = MKMapType.standard }
+    }
+    
+    @IBAction func hamburgerButton(_ sender: Any) {
+    }
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 1000
     var otherLocations: [MKPointAnnotation] = []
@@ -37,11 +56,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        segControlView.clipsToBounds = true
+        segControlView.layer.cornerRadius = 2
+        segControlView.layer.masksToBounds = true
+        
+        segcontrol.clipsToBounds = true
+        segcontrol.layer.cornerRadius = 2
+        segcontrol.layer.masksToBounds = true
+        
         self.setupFirebase()
         
         //additionalSafeAreaInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: mapView.bounds.height, right: 0.0)
         checkLocationServices()
-        
+        //segcontrol.selectedSegmentIndex = 0
         // FIXME: functions are called within callbacks to ensure sync
     }
     
@@ -165,7 +192,7 @@ class ViewController: UIViewController {
         for user in self.otherUsers {
             let newAnnotation = MKPointAnnotation()
             newAnnotation.coordinate = CLLocationCoordinate2D(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0)
-            newAnnotation.title = user.artists! + " - " + user.song!
+            newAnnotation.subtitle = user.artists! + " - " + user.song!
             self.mapView.addAnnotation(newAnnotation)
             
             self.otherLocations.append(newAnnotation)
@@ -210,6 +237,8 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    
     func checkLocationAuthorization()
     {
         let locationUnavailableAlert = UIAlertController(title: "Location Unavailable", message: "Your location is unavailable. Please check Settings > Privacy > Location Services > byter to enable location.", preferredStyle: .alert)
@@ -220,7 +249,7 @@ class ViewController: UIViewController {
             mapView.showsUserLocation = true
             mapView.showsCompass = false
             mapView.isRotateEnabled = false
-            mapView.mapType = MKMapType.standard
+            //mapView.mapType = MKMapType.standard
             centerViewOnUserLocation()
             locationManager.startUpdatingLocation()
             

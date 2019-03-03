@@ -49,6 +49,9 @@
                                     <constraint firstAttribute="height" constant="45" id="gaY-wH-gac"/>
                                 </constraints>
                                 <state key="normal" image="Hamburger"/>
+                                <connections>
+                                    <action selector="hamburgerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0R3-72-Fjv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjJ-mu-4fX">
                                 <rect key="frame" x="314" y="59" width="45" height="45"/>
@@ -58,10 +61,23 @@
                                 </constraints>
                                 <state key="normal" image="Search Image"/>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="axr-8w-J9K">
-                                <rect key="frame" x="82" y="295" width="110" height="200"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yv5-ta-S7J">
+                                <rect key="frame" x="53" y="725" width="270" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="0.64696596746575341" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MpG-fp-oFu">
+                                <rect key="frame" x="53" y="725" width="270" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="nkZ-BS-wAB"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -80,6 +96,8 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="q1G-zu-j11" id="0w1-WB-6rI"/>
+                        <outlet property="segControlView" destination="Yv5-ta-S7J" id="1ui-9Q-gl7"/>
+                        <outlet property="segcontrol" destination="MpG-fp-oFu" id="4WS-YO-JyY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
