@@ -8,6 +8,7 @@ target 'byter' do
   # Pods for byter
   pod 'AlamofireImage', '~> 3.5'
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   pod 'Hero'
 
   target 'byterTests' do
