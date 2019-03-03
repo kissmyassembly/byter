@@ -1,0 +1,6 @@
+framework module Pods_byterTests {
+  umbrella header "Pods-byterTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
