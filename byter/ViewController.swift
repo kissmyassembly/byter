@@ -109,10 +109,20 @@ class ViewController: UIViewController {
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
                 } else {
+                    let identifier = UIDevice.current.identifierForVendor?.uuidString
+                    let idString = identifier! as String
+                    var updatedUsers: [User] = []
+                    
                     for document in querySnapshot!.documents {
                         //print("\(document.documentID) => \(document.data())")
-                        print(document.data())
+                        let currentData = document.data()
+                        print(currentData)
+                        if (currentData["device_id"] as! String != idString) {
+                            let updatedUser = User.init(dictionary: currentData)
+                            updatedUsers.append(updatedUser)
+                        }
                     }
+                    self.otherUsers = updatedUsers
                 }
         }
     }
@@ -215,6 +225,9 @@ class ViewController: UIViewController {
             
             // update current user's information
             self.rewriteCurrentUser()
+            
+            // get all data from Firebase
+            self.getData()
             
             break
         case .denied:
