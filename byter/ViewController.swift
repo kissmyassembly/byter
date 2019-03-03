@@ -26,21 +26,20 @@ class ViewController: UIViewController {
     var docRef: DocumentReference!
     let collectionName = "users-test"
     
+    var currentDictionary: [String: Any] = [:]
     var currentUser: User?
     var otherUsers: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupFirebase()
+        
         //additionalSafeAreaInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: mapView.bounds.height, right: 0.0)
         checkLocationServices()
         
         // TEST CODE: set direct path to only user document on Firebase
         //docRef = Firestore.firestore().document("/users/SMyYX2fVBOA8sEX8kol6")
-        
-        // set up db from Firebase
-        let settings = FirestoreSettings()
-        Firestore.firestore().settings = settings
-        db = Firestore.firestore()
         
         // TEST CODE: hard code user data
 //        currentUser = User.init(dictionary: self.tempUserDictionary())
@@ -80,21 +79,28 @@ class ViewController: UIViewController {
         //self.getData()
         
         // update current user's information
-        self.rewriteCurrentUser()
+//        self.rewriteCurrentUser()
     }
     
-    func tempUserDictionary() -> [String: Any] {
-        let identifier = UIDevice.current.identifierForVendor?.uuidString
-        print("output is: ", identifier! as String)
-        
-        return [
-            //"spotify_id": "111",
-            "latitude": 37.783333, // TODO: put current user latitude
-            "longitude": -122.416668, // TODO: put current user latitude
-            //"artists": "New Artist",
-            //"song": "New Song"
-            "device_id": identifier ?? ""
-        ]
+//    func tempUserDictionary() -> [String: Any] {
+//        let identifier = UIDevice.current.identifierForVendor?.uuidString
+//        print("output is: ", identifier! as String)
+//
+//        return [
+//            //"spotify_id": "111",
+//            "latitude": 37.783333, // TODO: put current user latitude
+//            "longitude": -122.416668, // TODO: put current user latitude
+//            //"artists": "New Artist",
+//            //"song": "New Song"
+//            "device_id": identifier ?? ""
+//        ]
+//    }
+    
+    func setupFirebase() {
+        // set up db from Firebase
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
     }
     
     func getData() {
@@ -103,10 +109,20 @@ class ViewController: UIViewController {
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
                 } else {
+                    let identifier = UIDevice.current.identifierForVendor?.uuidString
+                    let idString = identifier! as String
+                    var updatedUsers: [User] = []
+                    
                     for document in querySnapshot!.documents {
                         //print("\(document.documentID) => \(document.data())")
-                        print(document.data())
+                        let currentData = document.data()
+                        print(currentData)
+                        if (currentData["device_id"] as! String != idString) {
+                            let updatedUser = User.init(dictionary: currentData)
+                            updatedUsers.append(updatedUser)
+                        }
                     }
+                    self.otherUsers = updatedUsers
                 }
         }
     }
@@ -133,17 +149,29 @@ class ViewController: UIViewController {
                     print("Current user successfully retrieved!")
                     
                     // replace user data locally
-                    let newDictionary = self.tempUserDictionary()
-                    print(newDictionary)
-                    let newUserData =  User.init(dictionary: newDictionary)
+                    //let newDictionary = self.tempUserDictionary()
+                    self.currentDictionary["device_id"] = idString
+                    print(self.currentDictionary)
+                    let newUserData =  User.init(dictionary: self.currentDictionary)
                     self.currentUser = newUserData
                     
                     // replace user data on Firebase
-                    let dID = querySnapshot!.documents.first?.documentID
-                    self.docRef = Firestore.firestore().document(
-                        self.collectionName + "/" + dID!)
+                    if let dID = querySnapshot!.documents.first?.documentID {
+                        self.docRef = Firestore.firestore().document(
+                            self.collectionName + "/" + dID)
+                    // make new user data on Firebase
+                    } else {
+                        self.docRef = self.db.collection(self.collectionName).addDocument(data: self.currentDictionary
+                        ) { error in
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                            } else {
+                                print("New document successfully created!")
+                            }
+                        }
+                    }
                     
-                    self.docRef.setData(newDictionary) { (error) in
+                    self.docRef.setData(self.currentDictionary) { (error) in
                         if let error = error {
                             print("Error: \(error.localizedDescription)")
                         } else {
@@ -195,6 +223,12 @@ class ViewController: UIViewController {
             centerViewOnUserLocation()
             locationManager.startUpdatingLocation()
             
+            // update current user's information
+            self.rewriteCurrentUser()
+            
+            // get all data from Firebase
+            self.getData()
+            
             break
         case .denied:
             
@@ -224,6 +258,14 @@ extension ViewController: CLLocationManagerDelegate
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
         //mapView.setRegion(region, animated: true)
+        
+        // add user coordinates to currentUser
+        self.currentDictionary["latitude"] = center.latitude
+        self.currentDictionary["longitude"] = center.longitude
+        
+        print(center.latitude)
+        print(center.longitude)
+        print()
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
