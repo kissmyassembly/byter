@@ -21,7 +21,6 @@ class ViewController: UIViewController {
    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 1000
-    // [device_id: MKPointAnnotation]
     var otherLocations: [MKPointAnnotation] = []
     
     var db: Firestore!
@@ -33,7 +32,7 @@ class ViewController: UIViewController {
     var otherUsers: [User] = []
     
     // testing
-    var timer = Timer()
+    //var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,6 +165,7 @@ class ViewController: UIViewController {
         for user in self.otherUsers {
             let newAnnotation = MKPointAnnotation()
             newAnnotation.coordinate = CLLocationCoordinate2D(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0)
+            newAnnotation.title = user.artists! + " - " + user.song!
             self.mapView.addAnnotation(newAnnotation)
             
             self.otherLocations.append(newAnnotation)
