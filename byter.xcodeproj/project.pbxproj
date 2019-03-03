@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1F1A0CB7CD40B16FBDAC296D /* Pods_byter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9564C055B5E310A778658C98 /* Pods_byter.framework */; };
+		5D103919222BB20400BDBAF7 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D103918222BB20400BDBAF7 /* FirebaseAPI.swift */; };
+		5D10391B222BB21000BDBAF7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10391A222BB21000BDBAF7 /* User.swift */; };
+		5D10391D222BB27200BDBAF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D10391C222BB27200BDBAF7 /* GoogleService-Info.plist */; };
+		5D10391F222BB3F100BDBAF7 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10391E222BB3F100BDBAF7 /* Keys.swift */; };
 		64AD9A3A222B792E0083D3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD9A39222B792E0083D3EA /* AppDelegate.swift */; };
 		64AD9A3C222B792E0083D3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AD9A3B222B792E0083D3EA /* ViewController.swift */; };
 		64AD9A3F222B792E0083D3EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64AD9A3D222B792E0083D3EA /* Main.storyboard */; };
@@ -40,6 +44,10 @@
 		077F88247DE45C751F1A3A14 /* Pods-byter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-byter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-byter/Pods-byter.debug.xcconfig"; sourceTree = "<group>"; };
 		32706216CC685EE810C932DB /* Pods_byterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_byterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F2C94811569C48523B92F4A /* Pods-byterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-byterUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-byterUITests/Pods-byterUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5D103918222BB20400BDBAF7 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
+		5D10391A222BB21000BDBAF7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5D10391C222BB27200BDBAF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5D10391E222BB3F100BDBAF7 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		64AD9A36222B792E0083D3EA /* byter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = byter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AD9A39222B792E0083D3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64AD9A3B222B792E0083D3EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +97,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D103914222BB1DD00BDBAF7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5D103918222BB20400BDBAF7 /* FirebaseAPI.swift */,
+				5D10391E222BB3F100BDBAF7 /* Keys.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5D103915222BB1E500BDBAF7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5D10391A222BB21000BDBAF7 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		64AD9A2D222B792E0083D3EA = {
 			isa = PBXGroup;
 			children = (
@@ -114,12 +139,15 @@
 		64AD9A38222B792E0083D3EA /* byter */ = {
 			isa = PBXGroup;
 			children = (
+				5D103914222BB1DD00BDBAF7 /* API */,
+				5D103915222BB1E500BDBAF7 /* Models */,
 				64AD9A39222B792E0083D3EA /* AppDelegate.swift */,
 				64AD9A3B222B792E0083D3EA /* ViewController.swift */,
 				64AD9A3D222B792E0083D3EA /* Main.storyboard */,
 				64AD9A40222B79300083D3EA /* Assets.xcassets */,
 				64AD9A42222B79300083D3EA /* LaunchScreen.storyboard */,
 				64AD9A45222B79300083D3EA /* Info.plist */,
+				5D10391C222BB27200BDBAF7 /* GoogleService-Info.plist */,
 			);
 			path = byter;
 			sourceTree = "<group>";
@@ -177,6 +205,7 @@
 				64AD9A33222B792E0083D3EA /* Frameworks */,
 				64AD9A34222B792E0083D3EA /* Resources */,
 				DA2B977A948775F6B76F9E0E /* [CP] Embed Pods Frameworks */,
+				39259167D8C3DEC2384560B6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64AD9A44222B79300083D3EA /* LaunchScreen.storyboard in Resources */,
+				5D10391D222BB27200BDBAF7 /* GoogleService-Info.plist in Resources */,
 				64AD9A41222B79300083D3EA /* Assets.xcassets in Resources */,
 				64AD9A3F222B792E0083D3EA /* Main.storyboard in Resources */,
 			);
@@ -312,6 +342,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39259167D8C3DEC2384560B6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-byter/Pods-byter-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-byter/Pods-byter-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5DEDB89A0415D715F3D8D455 /* [CP] Check Pods Manifest.lock */ = {
@@ -359,16 +407,26 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-byter/Pods-byter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +443,9 @@
 			files = (
 				64AD9A3C222B792E0083D3EA /* ViewController.swift in Sources */,
 				64AD9A3A222B792E0083D3EA /* AppDelegate.swift in Sources */,
+				5D10391B222BB21000BDBAF7 /* User.swift in Sources */,
+				5D103919222BB20400BDBAF7 /* FirebaseAPI.swift in Sources */,
+				5D10391F222BB3F100BDBAF7 /* Keys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -21,12 +22,137 @@ class ViewController: UIViewController {
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 1000
     
-
+    var db: Firestore!
+    var docRef: DocumentReference!
+    let collectionName = "users-test"
+    
+    var currentUser: User?
+    var otherUsers: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //additionalSafeAreaInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: mapView.bounds.height, right: 0.0)
         checkLocationServices()
+        
+        // TEST CODE: set direct path to only user document on Firebase
+        //docRef = Firestore.firestore().document("/users/SMyYX2fVBOA8sEX8kol6")
+        
+        // set up db from Firebase
+        let settings = FirestoreSettings()
+        Firestore.firestore().settings = settings
+        db = Firestore.firestore()
+        
+        // TEST CODE: hard code user data
+//        currentUser = User.init(dictionary: self.tempUserDictionary())
+//        let dataToSave: [String: Any] = currentUser!.asDictionary()
+//        currentUser = User.init(dictionary: self.tempUserDictionary())
+        
+        
+        // TEST CODE: save current user's data to firebase
+//        docRef.setData(dataToSave) { (error) in
+//            if let error = error {
+//                print("Error: \(error.localizedDescription)")
+//            } else {
+//                print("Data successfully saved!")
+//            }
+//        }
+        
+        // TEST CODE: fetch current user's data from firebase
+//        docRef.getDocument { (docSnapshot, error) in
+//            guard let docSnapshot = docSnapshot, docSnapshot.exists else { return }
+//            let myData = docSnapshot.data()
+//            let spotify_id = myData!["spotify_id"] as? String ?? ""
+//            let latitude = myData!["latitude"] as? Double ?? 0
+//            let longitude = myData!["longitude"] as? Double ?? 0
+//            let artists = myData!["artists"] as? String ?? ""
+//            let song = myData!["song"] as? String ?? ""
+//
+//            print("Current User Data")
+//            print("-----------------")
+//            print(spotify_id)
+//            print(latitude)
+//            print(longitude)
+//            print(artists)
+//            print(song)
+//        }
+        
+        // get all data from Firebase
+        //self.getData()
+        
+        // update current user's information
+        self.rewriteCurrentUser()
+    }
+    
+    func tempUserDictionary() -> [String: Any] {
+        let identifier = UIDevice.current.identifierForVendor?.uuidString
+        print("output is: ", identifier! as String)
+        
+        return [
+            //"spotify_id": "111",
+            "latitude": 37.783333, // TODO: put current user latitude
+            "longitude": -122.416668, // TODO: put current user latitude
+            //"artists": "New Artist",
+            //"song": "New Song"
+            "device_id": identifier ?? ""
+        ]
+    }
+    
+    func getData() {
+        db.collection(collectionName)
+            .getDocuments() { (querySnapshot, error) in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        //print("\(document.documentID) => \(document.data())")
+                        print(document.data())
+                    }
+                }
+        }
+    }
+    
+    func rewriteCurrentUser() {
+        let identifier = UIDevice.current.identifierForVendor?.uuidString
+        let idString = identifier! as String
+        
+        // TEST CODE: save current user's data to firebase
+        //        docRef.setData(dataToSave) { (error) in
+        //            if let error = error {
+        //                print("Error: \(error.localizedDescription)")
+        //            } else {
+        //                print("Data successfully saved!")
+        //            }
+        //        }
+        
+        db.collection(collectionName)
+            .whereField("device_id", isEqualTo: idString)
+            .getDocuments() { (querySnapshot, error) in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    print("Current user successfully retrieved!")
+                    
+                    // replace user data locally
+                    let newDictionary = self.tempUserDictionary()
+                    print(newDictionary)
+                    let newUserData =  User.init(dictionary: newDictionary)
+                    self.currentUser = newUserData
+                    
+                    // replace user data on Firebase
+                    let dID = querySnapshot!.documents.first?.documentID
+                    self.docRef = Firestore.firestore().document(
+                        self.collectionName + "/" + dID!)
+                    
+                    self.docRef.setData(newDictionary) { (error) in
+                        if let error = error {
+                            print("Error: \(error.localizedDescription)")
+                        } else {
+                            print("Data successfully saved!")
+                        }
+                    }
+                    
+                }
+        }
     }
     
     func setupLocationManager()

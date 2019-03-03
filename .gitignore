@@ -79,3 +79,6 @@ iOSInjectionProject/
 
 # iOS
 .DS_Store
+
+# API
+Keys.swift
