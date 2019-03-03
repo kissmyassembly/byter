@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     var docRef: DocumentReference!
     let collectionName = "users-test"
     
+    var currentDictionary: [String: Any] = [:]
     var currentUser: User?
     var otherUsers: [User] = []
     
@@ -83,19 +84,19 @@ class ViewController: UIViewController {
         self.rewriteCurrentUser()
     }
     
-    func tempUserDictionary() -> [String: Any] {
-        let identifier = UIDevice.current.identifierForVendor?.uuidString
-        print("output is: ", identifier! as String)
-        
-        return [
-            //"spotify_id": "111",
-            "latitude": 37.783333, // TODO: put current user latitude
-            "longitude": -122.416668, // TODO: put current user latitude
-            //"artists": "New Artist",
-            //"song": "New Song"
-            "device_id": identifier ?? ""
-        ]
-    }
+//    func tempUserDictionary() -> [String: Any] {
+//        let identifier = UIDevice.current.identifierForVendor?.uuidString
+//        print("output is: ", identifier! as String)
+//
+//        return [
+//            //"spotify_id": "111",
+//            "latitude": 37.783333, // TODO: put current user latitude
+//            "longitude": -122.416668, // TODO: put current user latitude
+//            //"artists": "New Artist",
+//            //"song": "New Song"
+//            "device_id": identifier ?? ""
+//        ]
+//    }
     
     func getData() {
         db.collection(collectionName)
@@ -133,9 +134,10 @@ class ViewController: UIViewController {
                     print("Current user successfully retrieved!")
                     
                     // replace user data locally
-                    let newDictionary = self.tempUserDictionary()
-                    print(newDictionary)
-                    let newUserData =  User.init(dictionary: newDictionary)
+                    //let newDictionary = self.tempUserDictionary()
+                    self.currentDictionary["device_id"] = idString
+                    print(self.currentDictionary)
+                    let newUserData =  User.init(dictionary: self.currentDictionary)
                     self.currentUser = newUserData
                     
                     // replace user data on Firebase
@@ -143,7 +145,7 @@ class ViewController: UIViewController {
                     self.docRef = Firestore.firestore().document(
                         self.collectionName + "/" + dID!)
                     
-                    self.docRef.setData(newDictionary) { (error) in
+                    self.docRef.setData(self.currentDictionary) { (error) in
                         if let error = error {
                             print("Error: \(error.localizedDescription)")
                         } else {
@@ -224,6 +226,14 @@ extension ViewController: CLLocationManagerDelegate
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
         //mapView.setRegion(region, animated: true)
+        
+        // add user coordinates to currentUser
+        self.currentDictionary["latitude"] = center.latitude
+        self.currentDictionary["longitude"] = center.longitude
+        
+        print(center.latitude)
+        print(center.longitude)
+        print()
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
