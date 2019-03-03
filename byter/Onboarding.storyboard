@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K5E-ip-ZKt">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hey View Controller-->
+        <scene sceneID="fBt-tv-Tid">
+            <objects>
+                <viewController storyboardIdentifier="heyViewController" id="K5E-ip-ZKt" customClass="heyViewController" customModule="byter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gqI-se-qG2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="hey." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uVN-R0-vG7">
+                                <rect key="frame" x="107" y="70" width="160" height="76"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="64"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="• welcome to byter  • discover music from around the world and share your own  • tap next to configure your experience" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sn5-ba-3Ke">
+                                <rect key="frame" x="20" y="188" width="343" height="326"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="326" id="rsK-fE-M0f"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJK-Zf-JbU">
+                                <rect key="frame" x="85" y="664" width="204" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <state key="normal" title="next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="k0l-rw-pRS" eventType="touchUpInside" id="QB4-W9-VPd"/>
+                                    <action selector="loginButton:" destination="K5E-ip-ZKt" eventType="touchUpInside" id="sPU-Pm-6q7"/>
+                                    <action selector="nextButton:" destination="K5E-ip-ZKt" eventType="touchUpInside" id="6Zc-9J-8ch"/>
+                                    <segue destination="DzY-AT-lp7" kind="show" identifier="heyToConnect" id="jaQ-TI-k2l"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21173727510000001" green="0.21178042890000001" blue="0.21173459289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Sn5-ba-3Ke" firstAttribute="leading" secondItem="CRq-gd-sEC" secondAttribute="leading" constant="20" id="1Jz-Zi-1D7"/>
+                            <constraint firstItem="uVN-R0-vG7" firstAttribute="top" secondItem="CRq-gd-sEC" secondAttribute="top" constant="26" id="3Ha-Ee-sOp"/>
+                            <constraint firstItem="uVN-R0-vG7" firstAttribute="leading" secondItem="CRq-gd-sEC" secondAttribute="leading" constant="107" id="71H-PQ-5b1"/>
+                            <constraint firstItem="CRq-gd-sEC" firstAttribute="trailing" secondItem="uVN-R0-vG7" secondAttribute="trailing" constant="108" id="XHD-A4-6eY"/>
+                            <constraint firstItem="CRq-gd-sEC" firstAttribute="trailing" secondItem="Sn5-ba-3Ke" secondAttribute="trailing" constant="12" id="esR-dC-8Wu"/>
+                            <constraint firstItem="Sn5-ba-3Ke" firstAttribute="top" secondItem="uVN-R0-vG7" secondAttribute="bottom" constant="42" id="z6e-xK-3bd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CRq-gd-sEC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QRo-ao-avG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="k0l-rw-pRS" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="956" y="133.74384236453201"/>
+        </scene>
+        <!--Connect View Controller-->
+        <scene sceneID="gPF-ui-amR">
+            <objects>
+                <viewController storyboardIdentifier="connectViewController" id="DzY-AT-lp7" customClass="connectViewController" customModule="byter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aE0-8Y-lcO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="connect." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M1b-DN-RUd">
+                                <rect key="frame" x="68" y="65" width="239" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="64"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="• byter uses Spotify to share music  • tap the Spotify icon below to connect your account" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxz-hV-7YD">
+                                <rect key="frame" x="16" y="184" width="343" height="259"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Spotify Logo" translatesAutoresizingMaskIntoConstraints="NO" id="r4m-Tn-d8A">
+                                <rect key="frame" x="110" y="457" width="155" height="155"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYH-BX-D4m">
+                                <rect key="frame" x="85" y="660" width="204" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <state key="normal" title="next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="k0l-rw-pRS" eventType="touchUpInside" id="t9f-SY-8i3"/>
+                                    <action selector="loginButton:" destination="K5E-ip-ZKt" eventType="touchUpInside" id="z0h-0z-MDO"/>
+                                    <action selector="nextButton:" destination="DzY-AT-lp7" eventType="touchUpInside" id="c88-uF-9Hk"/>
+                                    <segue destination="mo6-tc-Qu7" kind="show" identifier="connectToExplore" id="gFO-n9-VwG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21173727512359619" green="0.21178042888641357" blue="0.2117345929145813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="qgC-Uo-gKM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mdB-Oe-Fja"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="REv-iD-vYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1773.5999999999999" y="133.74384236453201"/>
+        </scene>
+        <!--Explore View Controller-->
+        <scene sceneID="hgN-ed-xJA">
+            <objects>
+                <viewController storyboardIdentifier="exploreViewController" id="mo6-tc-Qu7" customClass="exploreViewController" customModule="byter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hvx-5t-DxS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="explore." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fd0-kB-Jqo">
+                                <rect key="frame" x="68" y="61" width="239" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="64"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="• everything appears to be in order  • see you out there" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zd-Ps-vto">
+                                <rect key="frame" x="16" y="170" width="343" height="259"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEg-RZ-HPt">
+                                <rect key="frame" x="85" y="657" width="204" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <state key="normal" title="finish">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="k0l-rw-pRS" eventType="touchUpInside" id="Ey7-EP-v1Q"/>
+                                    <action selector="loginButton:" destination="K5E-ip-ZKt" eventType="touchUpInside" id="oef-PE-gUO"/>
+                                    <action selector="nextButton:" destination="mo6-tc-Qu7" eventType="touchUpInside" id="l7G-Pv-QS5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21173727512359619" green="0.21178042888641357" blue="0.2117345929145813" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="a3I-tX-eza"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fk8-co-ibR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U6L-Qs-43A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2610" y="134"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Spotify Logo" width="170.16000366210938" height="170.16000366210938"/>
+    </resources>
+</document>
