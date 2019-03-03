@@ -146,9 +146,20 @@ class ViewController: UIViewController {
                     self.currentUser = newUserData
                     
                     // replace user data on Firebase
-                    let dID = querySnapshot!.documents.first?.documentID
-                    self.docRef = Firestore.firestore().document(
-                        self.collectionName + "/" + dID!)
+                    if let dID = querySnapshot!.documents.first?.documentID {
+                        self.docRef = Firestore.firestore().document(
+                            self.collectionName + "/" + dID)
+                    // make new user data on Firebase
+                    } else {
+                        self.docRef = self.db.collection(self.collectionName).addDocument(data: self.currentDictionary
+                        ) { error in
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                            } else {
+                                print("New document successfully created!")
+                            }
+                        }
+                    }
                     
                     self.docRef.setData(self.currentDictionary) { (error) in
                         if let error = error {
