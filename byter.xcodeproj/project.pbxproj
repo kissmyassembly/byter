@@ -12,6 +12,7 @@
 		5D10391B222BB21000BDBAF7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10391A222BB21000BDBAF7 /* User.swift */; };
 		5D10391D222BB27200BDBAF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D10391C222BB27200BDBAF7 /* GoogleService-Info.plist */; };
 		5D10391F222BB3F100BDBAF7 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10391E222BB3F100BDBAF7 /* Keys.swift */; };
+		641C9DDE2230840600210725 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641C9DDD2230840600210725 /* SpotifyiOS.framework */; };
 		642249ED222C0859005B099C /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 642249EC222C0859005B099C /* Onboarding.storyboard */; };
 		642249F1222C12E8005B099C /* heyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642249F0222C12E8005B099C /* heyViewController.swift */; };
 		642249F3222C12F7005B099C /* connectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 642249F2222C12F7005B099C /* connectViewController.swift */; };
@@ -52,6 +53,7 @@
 		5D10391A222BB21000BDBAF7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5D10391C222BB27200BDBAF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5D10391E222BB3F100BDBAF7 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		641C9DDD2230840600210725 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../Downloads/ios-sdk-1.0.1/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		642249EC222C0859005B099C /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		642249F0222C12E8005B099C /* heyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heyViewController.swift; sourceTree = "<group>"; };
 		642249F2222C12F7005B099C /* connectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = connectViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				641C9DDE2230840600210725 /* SpotifyiOS.framework in Frameworks */,
 				1F1A0CB7CD40B16FBDAC296D /* Pods_byter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +188,7 @@
 		6F16E9BDC71FF42A6852AE7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				641C9DDD2230840600210725 /* SpotifyiOS.framework */,
 				9564C055B5E310A778658C98 /* Pods_byter.framework */,
 				904112B0CD60691CE5884F6C /* Pods_byterTests.framework */,
 				32706216CC685EE810C932DB /* Pods_byterUITests.framework */,
@@ -645,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.byter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gourijamakhandi.byter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -665,7 +669,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.byter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gourijamakhandi.byter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
